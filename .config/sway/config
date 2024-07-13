@@ -1,0 +1,14 @@
+include ./include/*
+
+exec nm-applet --indicator
+exec xembedsniproxy
+exec mako --config $HOME/.config/mako/config
+exec swayidle -w \
+     timeout 500 'swaylock -f -c 111111' \
+     timeout 1000 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+     before-sleep 'swaylock -f -c 111111'
+
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec waybar -c ~/.config/waybar/config -s ~/.config/waybar/style.css
+
+include /etc/sway/config.d/*
