@@ -657,6 +657,18 @@ else
         vim.cmd.hi 'Comment gui=none'
       end,
     },
+{
+    "OXY2DEV/markview.nvim",
+    ft = "markdown",
+
+    dependencies = {
+        -- You may not need this if you don't lazy load
+        -- Or if the parsers are in your $RUNTIMEPATH
+        "nvim-treesitter/nvim-treesitter",
+
+        "nvim-tree/nvim-web-devicons"
+    },
+},
 
     -- Highlight todo, notes, etc in comments
     { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
