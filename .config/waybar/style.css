@@ -10,7 +10,7 @@
     /* */
     border: solid 1px #FFFFFF;
     background: rgba(10, 10, 10, 1);
-    color: #cdd6f4;
+    color: #cccccc;
     font-family: Cantarell, Noto Sans, sans-serif;
     font-size: 1rem;
 }
@@ -126,7 +126,7 @@
 }
 
 #workspaces button.focused {
-    background-color: #b4befe;
+    background-color: #888888;
 }
 
 #workspaces button.urgent {
