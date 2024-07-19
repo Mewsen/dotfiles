@@ -489,12 +489,14 @@ else
 
 
         require 'lspconfig'.tsserver.setup {}
+        require 'lspconfig'.rust_analyzer.setup {}
         require 'lspconfig'.gopls.setup {}
         require 'lspconfig'.lua_ls.setup {}
-        require 'lspconfig'.clangd.setup {}
+        require 'lspconfig'.clangd.setup {
+          filetypes = { 'c', 'cpp', 'objcpp', 'cuda' }
+        }
         require 'lspconfig'.jdtls.setup {}
         require 'lspconfig'.pyright.setup {}
-        require 'lspconfig'.nil_ls.setup {}
         require 'lspconfig'.marksman.setup {}
         require 'lspconfig'.v_analyzer.setup {}
       end,
@@ -657,18 +659,18 @@ else
         vim.cmd.hi 'Comment gui=none'
       end,
     },
-{
-    "OXY2DEV/markview.nvim",
-    ft = "markdown",
+    {
+      "OXY2DEV/markview.nvim",
+      ft = "markdown",
 
-    dependencies = {
+      dependencies = {
         -- You may not need this if you don't lazy load
         -- Or if the parsers are in your $RUNTIMEPATH
         "nvim-treesitter/nvim-treesitter",
 
         "nvim-tree/nvim-web-devicons"
+      },
     },
-},
 
     -- Highlight todo, notes, etc in comments
     { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
