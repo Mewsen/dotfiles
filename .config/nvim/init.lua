@@ -9,6 +9,11 @@ else
   vim.g.maplocalleader = ' '
   vim.opt.conceallevel = 1
 
+  vim.api.nvim_create_autocmd('BufEnter', {
+    pattern = '/*',
+    command = 'lcd %:p:h'
+  })
+
   vim.opt.autochdir = true
 
   vim.filetype.add {
@@ -106,6 +111,10 @@ else
   -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
   -- or just use <C-\><C-n> to exit terminal mode
   vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
+
+  -- Make <C-e> open Explore
+  vim.keymap.set('n', '<C-e>', '<cmd>Explore<CR>')
 
   -- TIP: Disable arrow keys in normal mode
   vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
@@ -356,6 +365,26 @@ else
           builtin.find_files { cwd = vim.fn.stdpath 'config' }
         end, { desc = '[S]earch [N]eovim files' })
       end,
+    },
+
+    {
+      "ThePrimeagen/harpoon",
+      branch = "harpoon2",
+      dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
+      config = function()
+        local harpoon = require("harpoon")
+        local conf = require("telescope.config").values
+        harpoon.setup()
+        vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
+        vim.keymap.set("n", "<C-t>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+
+        vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
+
+        -- Toggle previous & next buffers stored within Harpoon list
+        vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
+        vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
+      end
+
     },
 
     { -- LSP Configuration & Plugins
