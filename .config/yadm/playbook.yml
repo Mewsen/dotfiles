@@ -14,6 +14,7 @@
           - neovim
           - code
           - yadm
+          - ripgrep
           - zsh
           - btop
           - ttf-firacode-nerd
@@ -21,17 +22,47 @@
           - noto-fonts-cjk
           - noto-fonts-emoji
           - noto-fonts-extra
+          - power-profiles-daemon
+          - rustup
+          - zsh-autosuggestions
+          - tmux
+          - snapper
           - go
+          - fzf
+          - lazygit
           - mpv
           - docker
           - ffmpeg
+          - npm
+          - marksman
+          - vale
+          - fd
+          - zsh-syntax-highlighting
+          - less
+          - tldr
+          - man
+          - maven
+          - jdtls
+          - hugo
+          - typescript-language-server
+          - lua-language-server
+          - markdownlint
     - name: desktop 
       community.general.pacman:
         update_cache: yes
         name:
+          - bluez
+          - v4l2loopback-dkms
+          - cups
+          - gnome-disk-utility
+          - virt-manager
+          - qemu-full
+          - nftables
+          - chromium
+          - bluez-utils
+          - blueman
           - xdg-user-dirs
           - sway
-          - kitty
           - bemenu-wayland
           - bemenu
           - grim
@@ -43,14 +74,6 @@
           - networkmanager
           - network-manager-applet
           - mako
-          - hyprpaper
-          - hyprlock
           - xdg-desktop-portal
-          - xdg-desktop-portal-hyprland
+          - xdg-desktop-portal-wlr
           - firefox
-    - name: laptop
-      community.general.pacman:
-        update_cache: yes
-        name:
-          - tlp
-          - powertop
