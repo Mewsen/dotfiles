@@ -179,7 +179,7 @@ else
     --    require('Comment').setup({})
 
     -- "gc" to comment visual regions/lines
-    { 'numToStr/Comment.nvim',    opts = {} },
+    { 'numToStr/Comment.nvim',       opts = {} },
 
     -- Here is a more advanced example where we pass configuration
     -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
@@ -262,6 +262,18 @@ else
         }, { mode = 'v' })
       end,
     },
+    {
+      "luckasRanarison/tailwind-tools.nvim",
+      name = "tailwind-tools",
+      build = ":UpdateRemotePlugins",
+      dependencies = {
+        "nvim-treesitter/nvim-treesitter",
+        "nvim-telescope/telescope.nvim", -- optional
+        "neovim/nvim-lspconfig",         -- optional
+      },
+      opts = {}                          -- your configuration
+    },
+    { "rafamadriz/friendly-snippets" },
     { -- Fuzzy Finder (files, lsp, etc)
       'nvim-telescope/telescope.nvim',
       event = 'VimEnter',
@@ -366,27 +378,6 @@ else
         end, { desc = '[S]earch [N]eovim files' })
       end,
     },
-
-    {
-      "ThePrimeagen/harpoon",
-      branch = "harpoon2",
-      dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
-      config = function()
-        local harpoon = require("harpoon")
-        local conf = require("telescope.config").values
-        harpoon.setup()
-        vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
-        vim.keymap.set("n", "<C-t>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
-
-        vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
-
-        -- Toggle previous & next buffers stored within Harpoon list
-        vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
-        vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
-      end
-
-    },
-
     { -- LSP Configuration & Plugins
       'neovim/nvim-lspconfig',
       dependencies = {
@@ -436,6 +427,8 @@ else
             local map = function(keys, func, desc)
               vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
             end
+
+            map('<C-T>', require('telescope.builtin').buffers, 'List Buffers')
 
             -- Jump to the definition of the word under your cursor.
             --  This is where a variable was first declared, or where a function is defined, etc.
@@ -623,8 +616,8 @@ else
           --
           -- No, but seriously. Please read `:help ins-completion`, it is really good!
           mapping = cmp.mapping.preset.insert {
-            ['<C-j>'] = cmp.mapping.select_next_item(),
-            ['<C-k>'] = cmp.mapping.select_prev_item(),
+            ['<C-n>'] = cmp.mapping.select_next_item(),
+            ['<C-p>'] = cmp.mapping.select_prev_item(),
 
             -- Scroll the documentation window [b]ack / [f]orward
             ['<C-b>'] = cmp.mapping.scroll_docs(-4),
