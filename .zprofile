@@ -42,3 +42,8 @@ export TERM=xterm-256color
 
 
 
+
+
+# Added by Toolbox App
+export PATH="$PATH:/home/michael/.local/share/JetBrains/Toolbox/scripts"
+
