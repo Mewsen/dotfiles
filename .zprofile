@@ -12,8 +12,8 @@ export LESS='-R --use-color -Dd+r$Du+b$'
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
-export WORKSPACE="$HOME/Workspace"
-export PERSONAL="$HOME/Personal"
+export WORKSPACE="$HOME/workspace"
+export PERSONAL="$HOME/personal"
 
 # Path
 export PATH="$HOME/.local/bin:$PATH"
