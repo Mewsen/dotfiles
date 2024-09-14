@@ -8,7 +8,6 @@
 
 #waybar {
     /* */
-    border: solid 1px #FFFFFF;
     background: rgba(10, 10, 10, 1);
     color: #cccccc;
     font-family: Cantarell, Noto Sans, sans-serif;
@@ -26,20 +25,14 @@
 #pulseaudio,
 #temperature,
 #tray {
-    padding-left: 0.4rem;
-    padding-right: 0.4rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
 }
 
 
 /* -----------------------------------------------------------------------------
  * Module styles
  * -------------------------------------------------------------------------- */
-
-#battery {
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
 
 #battery.low {
     color: orange;
@@ -51,12 +44,6 @@
 
 #cpu.critical {
     color: #f38ba8;
-}
-
-#memory {
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
 }
 
 #memory.warning {
@@ -90,10 +77,6 @@
     /* No styles */
 }
 
-#custom-spotify {
-    color: rgb(102, 220, 105);
-}
-
 #temperature {
     /* No styles */
 }
@@ -111,17 +94,11 @@
 }
 
 #workspaces button.active {
-    padding-bottom: 0.1rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
     color: #FFFFFF;
 }
 
 #workspaces button {
     /* To compensate for the top border and still have vertical centering */
-    padding-bottom: 0.1rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
     color: #FFFFFF;
 }
 
