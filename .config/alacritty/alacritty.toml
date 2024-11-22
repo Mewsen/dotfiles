@@ -40,4 +40,8 @@ index = 17
 color = '#db4b4b'
 
 [font.normal]
-family = "Cozette hidpi"
+family = "CozetteVector"
+
+[font]
+size = 14.0
+
