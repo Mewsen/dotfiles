@@ -517,6 +517,7 @@ else
         }
         require 'lspconfig'.jdtls.setup {}
         require 'lspconfig'.pyright.setup {}
+        require 'lspconfig'.nil_ls.setup {}
         require 'lspconfig'.marksman.setup {}
         require 'lspconfig'.v_analyzer.setup {}
       end,
