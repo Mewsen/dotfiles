@@ -508,7 +508,7 @@ else
         capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
 
-        require 'lspconfig'.tsserver.setup {}
+        require 'lspconfig'.ts_ls.setup {}
         require 'lspconfig'.rust_analyzer.setup {}
         require 'lspconfig'.gopls.setup {}
         require 'lspconfig'.lua_ls.setup {}
