@@ -77,6 +77,8 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
+vim.keymap.set('n', '<c-t>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle Terminal' })
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -493,6 +495,8 @@ require('lazy').setup({
       --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+      --
+
       local servers = {
         vtsls = {
           -- explicitly add default filetypes, so that we can extend
@@ -532,7 +536,6 @@ require('lazy').setup({
             },
           },
         },
-        clangd = {},
         gopls = {
           gopls = {
             settings = {
@@ -581,8 +584,17 @@ require('lazy').setup({
         css_variables = {},
         docker_compose_language_service = {},
         bashls = {},
+        ltex = {
+          settings = {
+            ltex = {
+              language = 'de',
+            },
+          },
+        },
         marksman = {},
         jsonls = {},
+        clangd = {},
+        htmx = {},
         tailwindcss = {
           filetypes_exclude = { 'markdown' },
         },
@@ -857,7 +869,7 @@ require('lazy').setup({
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = {},
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -875,6 +887,19 @@ require('lazy').setup({
     --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+  },
+  { 'akinsho/toggleterm.nvim', version = '*', config = {
+    open_mapping = [[<c-\>]],
+    direction = 'float',
+  } },
+  {
+    'OXY2DEV/markview.nvim',
+    lazy = false, -- Recommended
+    -- ft = "markdown" -- If you decide to lazy-load anyway
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-tree/nvim-web-devicons',
+    },
   },
   {
     'echasnovski/mini.move',
