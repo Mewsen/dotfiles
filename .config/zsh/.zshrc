@@ -76,5 +76,5 @@ compinit
 export GPG_TTY="$(tty)"
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 gpgconf --launch gpg-agent
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/michael/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /home/michael/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
