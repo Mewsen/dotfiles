@@ -582,19 +582,13 @@ require('lazy').setup({
         dockerls = {},
         jdtls = {},
         css_variables = {},
+        cssls = {},
         docker_compose_language_service = {},
         bashls = {},
-        ltex = {
-          settings = {
-            ltex = {
-              language = 'de',
-            },
-          },
-        },
         marksman = {},
         jsonls = {},
-        clangd = {},
         htmx = {},
+        tinymist = {},
         tailwindcss = {
           filetypes_exclude = { 'markdown' },
         },
@@ -605,6 +599,13 @@ require('lazy').setup({
                 callSnippet = 'Replace',
               },
             },
+          },
+        },
+      }
+      require('lspconfig').ltex_plus.setup {
+        settings = {
+          ltex = {
+            language = 'de-DE',
           },
         },
       }
@@ -804,25 +805,6 @@ require('lazy').setup({
       }
     end,
   },
-
-  { -- You can easily change to a different colorscheme.
-    -- Change the name of the colorscheme plugin below, and then
-    -- change the command in the config to whatever the name of that colorscheme is.
-    --
-    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'folke/tokyonight.nvim',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
-    init = function()
-      -- Load the colorscheme here.
-      -- Like many other themes, this one has different styles, and you could load
-      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
-
-      -- You can configure highlights by doing something like:
-      vim.cmd.hi 'Comment gui=none'
-    end,
-  },
-
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
@@ -900,6 +882,17 @@ require('lazy').setup({
       'nvim-treesitter/nvim-treesitter',
       'nvim-tree/nvim-web-devicons',
     },
+  },
+  {
+    'Mofiqul/adwaita.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.g.adwaita_darker = true -- for darker version
+      vim.g.adwaita_disable_cursorline = true -- to disable cursorline
+      vim.g.adwaita_transparent = true -- makes the background transparent
+      vim.cmd 'colorscheme adwaita'
+    end,
   },
   {
     'echasnovski/mini.move',

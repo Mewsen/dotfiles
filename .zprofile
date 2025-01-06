@@ -5,6 +5,7 @@ alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ip='ip -color=auto'
 alias ls='ls --color=auto'
+alias nvimconfig='nvim $XDG_CONFIG_HOME/nvim/init.lua'
 export LESS='-R --use-color -Dd+r$Du+b$'
 
 
@@ -19,7 +20,7 @@ export PERSONAL="$HOME/personal"
 export PATH="$HOME/.local/bin:$PATH"
 
 # Docker
-export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+#export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
 # Rust
 export CARGO_HOME="$WORKSPACE/cargo"
@@ -31,13 +32,15 @@ export PATH="$WORKSPACE/go/bin:$PATH"
 export GOPATH="$WORKSPACE/go"
 export GOBIN="$GOPATH/bin/"
 
+# Java
+export JAVA_HOME="$(readlink -f /usr/bin/java | sed "s:/bin/java::")"
+
 # Zsh
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 
 export LANG=en_US.UTF-8
 export EDITOR='nvim'
-
 export TERM=xterm-256color
 
 

@@ -1,4 +1,3 @@
-
 [Default Applications]
 x-scheme-handler/eclipse+command x-scheme-handler/eclipse+mpc=_usr_lib_eclipse_.desktop
 x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
@@ -85,6 +84,10 @@ x-scheme-handler/https=firefox.desktop
 x-scheme-handler/about=firefox.desktop
 x-scheme-handler/unknown=firefox.desktop
 x-scheme-handler/discord-1221314350216646828=discord-1221314350216646828.desktop
+x-scheme-handler/mailto=org.gnome.Geary.desktop
+text/calendar=org.gnome.Evolution.desktop
 
 [Added Associations]
 x-scheme-handler/http=firefox.desktop
+x-scheme-handler/mailto=org.gnome.Geary.desktop;
+text/calendar=org.gnome.Calendar.desktop;org.gnome.Evolution.desktop;
