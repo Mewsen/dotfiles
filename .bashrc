@@ -1,12 +1,15 @@
-#!/bin/sh
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
+set -o vi
 
 # Enable Colors 
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ip='ip -color=auto'
 alias ls='ls --color=auto'
-alias nvimconfig='nvim $XDG_CONFIG_HOME/nvim/init.lua'
-export LESS='-R --use-color -Dd+r$Du+b$'
 
 
 # XDG
@@ -18,9 +21,7 @@ export PERSONAL="$HOME/personal"
 
 # Path
 export PATH="$HOME/.local/bin:$PATH"
-
-# Docker
-#export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+export PATH=$PATH:/usr/local/go/bin
 
 # Rust
 export CARGO_HOME="$WORKSPACE/cargo"
@@ -35,18 +36,24 @@ export GOBIN="$GOPATH/bin/"
 # Java
 export JAVA_HOME="$(readlink -f /usr/bin/java | sed "s:/bin/java::")"
 
-# Zsh
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
-
-
 export LANG=en_US.UTF-8
 export EDITOR='nvim'
 export TERM=xterm-256color
 
+export GPG_TTY="$(tty)"
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
 
+# User specific aliases and functions
+if [ -d ~/.bashrc.d ]; then
+    for rc in ~/.bashrc.d/*; do
+        if [ -f "$rc" ]; then
+            . "$rc"
+        fi
+    done
+fi
+unset rc
 
+. "/home/michael/workspace/cargo/env"
 
-
-# Added by Toolbox App
-export PATH="$PATH:/home/michael/.local/share/JetBrains/Toolbox/scripts"
 
