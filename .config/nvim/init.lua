@@ -3,6 +3,8 @@ vim.g.maplocalleader = ' '
 
 vim.g.have_nerd_font = false
 
+vim.diagnostic.config { virtual_text = true }
+
 vim.opt.conceallevel = 1
 
 vim.opt.relativenumber = true
@@ -531,7 +533,7 @@ require('lazy').setup({
                 parameterNames = { enabled = 'literals' },
                 parameterTypes = { enabled = true },
                 propertyDeclarationTypes = { enabled = true },
-                variableTypes = { enabled = false },
+                variableTypes = { enabled = true },
               },
             },
           },
@@ -578,7 +580,6 @@ require('lazy').setup({
         },
         pyright = {},
         rust_analyzer = {},
-        ts_ls = {},
         dockerls = {},
         jdtls = {},
         css_variables = {},
@@ -587,7 +588,6 @@ require('lazy').setup({
         bashls = {},
         marksman = {},
         jsonls = {},
-        htmx = {},
         tinymist = {},
         tailwindcss = {
           filetypes_exclude = { 'markdown' },
@@ -870,10 +870,6 @@ require('lazy').setup({
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
-  { 'akinsho/toggleterm.nvim', version = '*', config = {
-    open_mapping = [[<c-\>]],
-    direction = 'float',
-  } },
   {
     'Mofiqul/adwaita.nvim',
     lazy = false,
