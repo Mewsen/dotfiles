@@ -36,9 +36,9 @@ export GOBIN="$GOPATH/bin/"
 # Java
 export JAVA_HOME="$(readlink -f /usr/bin/java | sed "s:/bin/java::")"
 
-export LANG=en_US.UTF-8
-export EDITOR='nvim'
-export TERM=xterm-256color
+export LANG="en_US.UTF-8"
+export EDITOR="nvim"
+export TERM="xterm-256color"
 
 export GPG_TTY="$(tty)"
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)

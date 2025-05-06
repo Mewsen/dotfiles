@@ -3,3 +3,6 @@
 	ff = only
 [yadm]
 	cipher = openssl
+[user]
+	email = michael@tews.dev
+	name = Michael Tews

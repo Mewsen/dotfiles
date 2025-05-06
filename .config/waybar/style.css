@@ -1,112 +1,53 @@
+@define-color foreground #eeeeee;
+@define-color foreground-inactive #aaaaaa;
+@define-color background #000000;
+
 * {
-    border: none;
-    border-radius: 0;
-    min-height: 0;
-    margin: 0;
+    font-family: FiraCode Nerd Font;
+    font-size: 17px;
     padding: 0;
+    margin: 0;
 }
 
 #waybar {
-    /* */
-    background: rgba(10, 10, 10, 1);
-    color: #cccccc;
-    font-family: Cantarell, Noto Sans, sans-serif;
-    font-size: 1rem;
-}
-
-/* Each module */
-#battery,
-#clock,
-#cpu,
-#custom-keyboard-layout,
-#memory,
-#mode,
-#network,
-#pulseaudio,
-#temperature,
-#tray {
-    padding-top: 0.4rem;
-    padding-bottom: 0.4rem;
-}
-
-
-/* -----------------------------------------------------------------------------
- * Module styles
- * -------------------------------------------------------------------------- */
-
-#battery.low {
-    color: orange;
-}
-
-#cpu.warning {
-    color: #fab387;
-}
-
-#cpu.critical {
-    color: #f38ba8;
-}
-
-#memory.warning {
-    color: #fab387;
-}
-
-#memory.critical {
-    color: #f38ba8;
-    animation-name: blink-critical;
-    animation-duration: 2s;
-}
-
-#mode {
-    background: rgba(10, 10, 10, 1);
-    border-top: 0.1rem solid white;
-}
-
-#network {
-    /* No styles */
-}
-
-#network.disconnected {
-    color: orange;
-}
-
-#pulseaudio {
-    /* No styles */
-}
-
-#pulseaudio.muted {
-    /* No styles */
-}
-
-#temperature {
-    /* No styles */
-}
-
-#temperature.critical {
-    color: red;
-}
-
-#tray {
-    /* No styles */
-}
-
-#window {
-    font-weight: bold;
-}
-
-#workspaces button.active {
-    color: #FFFFFF;
+    color: @foreground;
+    background-color: @background;
 }
 
 #workspaces button {
-    /* To compensate for the top border and still have vertical centering */
-    color: #FFFFFF;
+    color: @foreground-inactive;
+    padding-left: 0.5rem;
+    padding-right: 0.57rem;
+}
+
+
+#workspaces button.active {
+    color: @foreground-inactive;
+    background-color: @background;
 }
 
 #workspaces button.focused {
-    background-color: #888888;
+    background-color: @background;
+    color: @foreground;
 }
 
 #workspaces button.urgent {
-    border-color: #eba0ac;
-    color: #f38ba8;
+    background-color: @background;
+    color: red;
+}
+
+
+#memory,
+#temperature {
+    padding-left: 1em
+}
+
+#wireplumber,
+#battery,
+#backlight,
+#language,
+#network,
+#bluetooth,
+#tray {
+    padding-right: 1em
 }
