@@ -1,0 +1,76 @@
+@define-color primary-foreground #eeeeee;
+@define-color primary-foreground-inactive #aaaaaa;
+@define-color primary-background #000000;
+
+@define-color secondary-foreground #dddddd;
+@define-color secondary-foreground-inactive #222222;
+@define-color secondary-background #111111;
+
+
+* {
+    font-family: FiraCode Nerd Font;
+    font-size: 17px;
+    padding: 0;
+    margin: 0;
+}
+
+#waybar {
+    color: @primary-foreground;
+    background-color: @primary-background;
+    border-radius: 1rem;
+}
+
+#workspaces {
+    padding: 0px 0.8rem;
+    border-radius: 1rem;
+    background-color: @secondary-background;
+}
+
+#workspaces button {
+    all:unset;
+    padding: 0px 5px;
+    color: alpha(@primary-foreground-inactive,.4);
+    transition: all .2s ease;
+}
+#workspaces button:hover {
+    color:rgba(0,0,0,0);
+    border: none;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+    transition: all 1s ease;
+}
+#workspaces button.active {
+    color: @primary-foreground;
+    border: none;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
+}
+#workspaces button.empty {
+    color: @secondary-foreground-inactive;
+    border: none;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .2);
+}
+#workspaces button.empty:hover {
+    color: @secondary-foreground;
+    border: none;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+    transition: all 1s ease;
+}
+#workspaces button.empty.active {
+    color: @secondary-foreground;
+    border: none;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
+}
+
+#memory,
+#temperature {
+    padding-left: 1em
+}
+
+#wireplumber,
+#battery,
+#backlight,
+#language,
+#network,
+#bluetooth,
+#tray {
+    padding-right: 1em
+}

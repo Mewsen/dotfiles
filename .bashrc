@@ -10,9 +10,11 @@ alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ip='ip -color=auto'
 alias ls='ls --color=auto'
+alias notes='$EDITOR $PERSONAL/documents/notes.md'
 
 
 # XDG
+export XDG_DATA_DIRS=$XDG_DATA_DIRS:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -24,14 +26,14 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
 
 # Rust
-export CARGO_HOME="$WORKSPACE/cargo"
-export RUSTUP_HOME="$WORKSPACE/rustup"
-export PATH="$WORKSPACE/cargo/bin:$PATH"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export PATH="$XDG_DATA_HOME/cargo/bin:$PATH"
 
 # Go
-export PATH="$WORKSPACE/go/bin:$PATH"
-export GOPATH="$WORKSPACE/go"
+export GOPATH="$XDG_DATA_HOME/go"
 export GOBIN="$GOPATH/bin/"
+export PATH="$GOPATH:$PATH"
 
 # Java
 export JAVA_HOME="$(readlink -f /usr/bin/java | sed "s:/bin/java::")"
@@ -53,7 +55,3 @@ if [ -d ~/.bashrc.d ]; then
     done
 fi
 unset rc
-
-. "/home/michael/workspace/cargo/env"
-
-

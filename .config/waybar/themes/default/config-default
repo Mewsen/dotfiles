@@ -2,7 +2,7 @@
         "layer": "top",
         "position": "top",
         "reload_style_on_change": true,
-        "modules-left": ["clock", "tray"],
+        "modules-left": ["custom/notification","clock","custom/pacman","tray"],
         "modules-center": ["hyprland/workspaces"],
         "modules-right": ["group/expand","bluetooth","network","battery"],
 
@@ -17,6 +17,12 @@
             "persistent-workspaces": {
                 "*": [ 1,2,3,4,5 ]
             }
+        },
+        "custom/notification": {
+            "tooltip": false,
+            "format": "",
+            "on-click": "swaync-client -t -sw",
+            "escape": true
         },
         "clock": {
             "format": "{:%I:%M:%S %p} ",
@@ -72,6 +78,15 @@
             "󰂂",
             "󰁹"
             ],
+        },
+        "custom/pacman": {
+            "format": "󰅢 {}",
+            "interval": 30,   
+            "exec": "checkupdates | wc -l",
+            "exec-if": "exit 0",
+            "on-click": "kitty sh -c 'yay -Syu; echo Done - Press enter to exit; read'; pkill -SIGRTMIN+8 waybar",
+            "signal": 8,
+            "tooltip": false,
         },
         "custom/expand": {
             "format": "",

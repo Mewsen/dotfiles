@@ -9,6 +9,8 @@ vim.opt.conceallevel = 1
 
 vim.opt.relativenumber = true
 
+vim.o.winborder = 'solid'
+
 --vim.opt.autochdir = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
@@ -185,7 +187,7 @@ require('lazy').setup({
   -- after the plugin has been loaded:
   --  config = function() ... end
 
-  { -- Useful plugin to show you pending keybinds.
+  {                     -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     opts = {
@@ -228,7 +230,7 @@ require('lazy').setup({
 
       -- Document existing key chains
       spec = {
-        { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
+        { '<leader>c', group = '[C]ode',     mode = { 'n', 'x' } },
         { '<leader>d', group = '[D]ocument' },
         { '<leader>r', group = '[R]ename' },
         { '<leader>s', group = '[S]earch' },
@@ -268,7 +270,7 @@ require('lazy').setup({
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
-      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+      { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -364,15 +366,11 @@ require('lazy').setup({
       },
     },
   },
-  { 'Bilal2453/luvit-meta', lazy = true },
+  { 'Bilal2453/luvit-meta',     lazy = true },
   {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
     dependencies = {
-      -- Automatically install LSPs and related tools to stdpath for Neovim
-      { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
-      'williamboman/mason-lspconfig.nvim',
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       { 'j-hui/fidget.nvim', opts = {} },
@@ -498,142 +496,200 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       --
+      -- Ensure the servers and tools above are installed
 
-      local servers = {
-        vtsls = {
-          -- explicitly add default filetypes, so that we can extend
-          -- them in related extras
-          filetypes = {
-            'javascript',
-            'javascriptreact',
-            'javascript.jsx',
-            'typescript',
-            'typescriptreact',
-            'typescript.tsx',
-          },
-          settings = {
-            complete_function_calls = true,
-            vtsls = {
-              enableMoveToFileCodeAction = true,
-              autoUseWorkspaceTsdk = true,
-              experimental = {
-                completion = {
-                  enableServerSideFuzzyMatch = true,
-                },
-              },
-            },
-            typescript = {
-              updateImportsOnFileMove = { enabled = 'always' },
-              suggest = {
-                completeFunctionCalls = true,
-              },
-              inlayHints = {
-                enumMemberValues = { enabled = true },
-                functionLikeReturnTypes = { enabled = true },
-                parameterNames = { enabled = 'literals' },
-                parameterTypes = { enabled = true },
-                propertyDeclarationTypes = { enabled = true },
-                variableTypes = { enabled = true },
-              },
-            },
-          },
+
+      require 'lspconfig'.ts_ls.setup {
+
+      }
+      require 'lspconfig'.vtsls.setup {
+
+        -- explicitly add default filetypes, so that we can extend
+        -- them in related extras
+        filetypes = {
+          "javascript",
+          "javascriptreact",
+          "javascript.jsx",
+          "typescript",
+          "typescriptreact",
+          "typescript.tsx",
         },
-        gopls = {
-          gopls = {
-            settings = {
-              gopls = {
-                gofumpt = true,
-                codelenses = {
-                  gc_details = true,
-                  generate = true,
-                  regenerate_cgo = true,
-                  run_govulncheck = true,
-                  test = true,
-                  tidy = true,
-                  upgrade_dependency = true,
-                  vendor = true,
-                },
-                hints = {
-                  assignVariableTypes = true,
-                  compositeLiteralFields = true,
-                  compositeLiteralTypes = true,
-                  constantValues = true,
-                  functionTypeParameters = true,
-                  parameterNames = true,
-                  rangeVariableTypes = true,
-                },
-                analyses = {
-                  fieldalignment = true,
-                  nilness = true,
-                  unusedparams = true,
-                  unusedwrite = true,
-                  useany = true,
-                },
-                usePlaceholders = true,
-                completeUnimported = true,
-                staticcheck = true,
-                directoryFilters = { '-.git', '-.vscode', '-.idea', '-.vscode-test', '-node_modules' },
-                semanticTokens = true,
-              },
-            },
-          },
-        },
-        pyright = {},
-        rust_analyzer = {},
-        dockerls = {},
-        jdtls = {},
-        css_variables = {},
-        cssls = {},
-        docker_compose_language_service = {},
-        bashls = {},
-        marksman = {},
-        jsonls = {},
-        tinymist = {},
-        tailwindcss = {
-          filetypes_exclude = { 'markdown' },
-        },
-        lua_ls = {
-          settings = {
-            Lua = {
+        settings = {
+          complete_function_calls = true,
+          vtsls = {
+            enableMoveToFileCodeAction = true,
+            autoUseWorkspaceTsdk = true,
+            experimental = {
               completion = {
-                callSnippet = 'Replace',
+                enableServerSideFuzzyMatch = true,
               },
+            },
+          },
+          typescript = {
+            updateImportsOnFileMove = { enabled = "always" },
+            suggest = {
+              completeFunctionCalls = true,
+            },
+            inlayHints = {
+              enumMemberValues = { enabled = true },
+              functionLikeReturnTypes = { enabled = true },
+              parameterNames = { enabled = "literals" },
+              parameterTypes = { enabled = true },
+              propertyDeclarationTypes = { enabled = true },
+              variableTypes = { enabled = false },
             },
           },
         },
       }
-      require('lspconfig').ltex_plus.setup {
+      require 'lspconfig'.tailwindcss.setup {
+
+        filetypes_exclude = { "markdown" },
+      }
+      require 'lspconfig'.eslint.setup {
+
+      }
+      require 'lspconfig'.rust_analyzer.setup {
+
+      }
+      require 'lspconfig'.gopls.setup {
+
+        gopls = {
+          settings = {
+            gopls = {
+              gofumpt = true,
+              codelenses = {
+                gc_details = true,
+                generate = true,
+                regenerate_cgo = true,
+                run_govulncheck = true,
+                test = true,
+                tidy = true,
+                upgrade_dependency = true,
+                vendor = true,
+              },
+              hints = {
+                assignVariableTypes = true,
+                compositeLiteralFields = true,
+                compositeLiteralTypes = true,
+                constantValues = true,
+                functionTypeParameters = true,
+                parameterNames = true,
+                rangeVariableTypes = true,
+              },
+              analyses = {
+                fieldalignment = true,
+                nilness = true,
+                unusedparams = true,
+                unusedwrite = true,
+                useany = true,
+              },
+              usePlaceholders = true,
+              completeUnimported = true,
+              staticcheck = true,
+              directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+              semanticTokens = true,
+            },
+          },
+        },
+      }
+      require 'lspconfig'.lua_ls.setup {
+
+      }
+      require 'lspconfig'.clangd.setup {
+
+        keys = {
+          { "<leader>ch", "<cmd>ClangdSwitchSourceHeader<cr>", desc = "Switch Source/Header (C/C++)" },
+        },
+        root_dir = function(fname)
+          return require("lspconfig.util").root_pattern(
+            "Makefile",
+            "configure.ac",
+            "configure.in",
+            "config.h.in",
+            "meson.build",
+            "meson_options.txt",
+            "build.ninja"
+          )(fname) or require("lspconfig.util").root_pattern("compile_commands.json", "compile_flags.txt")(
+            fname
+          ) or require("lspconfig.util").find_git_ancestor(fname)
+        end,
+        capabilities = {
+          offsetEncoding = { "utf-16" },
+        },
+        cmd = {
+          "clangd",
+          "--background-index",
+          "--clang-tidy",
+          "--header-insertion=iwyu",
+          "--completion-style=detailed",
+          "--function-arg-placeholders",
+          "--fallback-style=llvm",
+        },
+        init_options = {
+          usePlaceholders = true,
+          completeUnimported = true,
+          clangdFileStatus = true,
+        },
+        filetypes = { 'c', 'cpp', 'objcpp', 'cuda' }
+      }
+      require 'lspconfig'.jsonls.setup {
+
+        on_new_config = function(new_config)
+          new_config.settings.json.schemas = new_config.settings.json.schemas or {}
+          vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
+        end,
+        settings = {
+          json = {
+            format = {
+              enable = true,
+            },
+            validate = { enable = true },
+          },
+        },
+      }
+      require 'lspconfig'.dockerls.setup {
+
+      }
+      require 'lspconfig'.docker_compose_language_service.setup {
+
+      }
+      require 'lspconfig'.neocmake.setup {
+
+      }
+      require 'lspconfig'.jdtls.setup {
+
+      }
+      require 'lspconfig'.ltex.setup {
+
         settings = {
           ltex = {
-            language = 'de-DE',
+            language = { "en-US", "de-DE" },
           },
         },
       }
-      -- Ensure the servers and tools above are installed
-      --  To check the current status of installed tools and/or manually install
-      --  other tools, you can run
-      --    :Mason
-      --
-      --  You can press `g?` for help in this menu.
-      require('mason').setup()
-      -- You can add other tools here that you want Mason to install
-      -- for you, so that they are available from within Neovim.
-      local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, {
-        'stylua', -- Used to format Lua code
-      })
-      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-      require('mason-lspconfig').setup {
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for ts_ls)
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
-          end,
-        },
+      require 'lspconfig'.css_variables.setup {
+
+      }
+      require 'lspconfig'.pyright.setup {
+
+      }
+      require 'lspconfig'.html.setup {
+
+      }
+      require 'lspconfig'.sqls.setup {
+
+      }
+      require 'lspconfig'.bashls.setup {
+
+      }
+      require 'lspconfig'.nil_ls.setup {
+
+      }
+      require 'lspconfig'.marksman.setup {
+
+      }
+      require 'lspconfig'.v_analyzer.setup {
+
       }
     end,
   },
@@ -870,16 +926,31 @@ require('lazy').setup({
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
+  -- {
+  --   'Mofiqul/adwaita.nvim',
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     vim.g.adwaita_darker = true -- for darker version
+  --     vim.g.adwaita_disable_cursorline = true -- to disable cursorline
+  --     vim.g.adwaita_transparent = true -- makes the background transparent
+  --     vim.cmd 'colorscheme adwaita'
+  --   end,
+  -- },
+  --{
+  --  'uZer/pywal16.nvim',
+  --  -- for local dev replace with:
+  --  -- dir = '~/your/path/pywal16.nvim',
+  --  config = function()
+  --    vim.cmd.colorscheme("pywal16")
+  --  end,
+  --},
   {
-    'Mofiqul/adwaita.nvim',
-    lazy = false,
-    priority = 1000,
+    "nyoom-engineering/oxocarbon.nvim",
     config = function()
-      vim.g.adwaita_darker = true -- for darker version
-      vim.g.adwaita_disable_cursorline = true -- to disable cursorline
-      vim.g.adwaita_transparent = true -- makes the background transparent
-      vim.cmd 'colorscheme adwaita'
-    end,
+      vim.opt.background = "dark"
+      vim.cmd("colorscheme oxocarbon")
+    end
   },
   {
     'ray-x/go.nvim',
