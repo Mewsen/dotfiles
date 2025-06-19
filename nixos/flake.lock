@@ -1,0 +1,136 @@
+{
+  "nodes": {
+    "fenix": {
+      "inputs": {
+        "nixpkgs": [
+          "neverest",
+          "nixpkgs"
+        ],
+        "rust-analyzer-src": "rust-analyzer-src"
+      },
+      "locked": {
+        "lastModified": 1732405626,
+        "narHash": "sha256-uDbQrdOyqa2679kKPzoztMxesOV7DG2+FuX/TZdpxD0=",
+        "owner": "soywod",
+        "repo": "fenix",
+        "rev": "c7af381484169a78fb79a11652321ae80b0f92a6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "soywod",
+        "repo": "fenix",
+        "type": "github"
+      }
+    },
+    "neverest": {
+      "inputs": {
+        "fenix": "fenix",
+        "nixpkgs": "nixpkgs",
+        "pimalaya": "pimalaya"
+      },
+      "locked": {
+        "lastModified": 1734595002,
+        "narHash": "sha256-MXQDy5b/ooSkISEVM9KxHeqkkhPimZJtX3j9jqTP5aU=",
+        "owner": "pimalaya",
+        "repo": "neverest",
+        "rev": "cc5f5214d3bea064ed059116ac81e40a803faa7e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pimalaya",
+        "ref": "master",
+        "repo": "neverest",
+        "type": "github"
+      }
+    },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1747900541,
+        "narHash": "sha256-dn64Pg9xLETjblwZs9Euu/SsjW80pd6lr5qSiyLY1pg=",
+        "owner": "NixOS",
+        "repo": "nixos-hardware",
+        "rev": "11f2d9ea49c3e964315215d6baa73a8d42672f06",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "master",
+        "repo": "nixos-hardware",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1732539489,
+        "narHash": "sha256-EPstM4aUuClDkFdoyno1CSRZIfGdCfZKw/XzMlQB0NY=",
+        "owner": "soywod",
+        "repo": "nixpkgs",
+        "rev": "87b010196489f96e4acdcc804ed3d096476e46ad",
+        "type": "github"
+      },
+      "original": {
+        "owner": "soywod",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1748302896,
+        "narHash": "sha256-ixMT0a8mM091vSswlTORZj93WQAJsRNmEvqLL+qwTFM=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "7848cd8c982f7740edf76ddb3b43d234cb80fc4d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-25.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "pimalaya": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1732869386,
+        "narHash": "sha256-83tDRVfSBVZgIp6WOb6r/T6cHfP7lNsK1MUTdkGMi14=",
+        "owner": "pimalaya",
+        "repo": "nix",
+        "rev": "be23e0deeb014c6be5232322b892c9bee25dee77",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pimalaya",
+        "repo": "nix",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "neverest": "neverest",
+        "nixos-hardware": "nixos-hardware",
+        "nixpkgs": "nixpkgs_2"
+      }
+    },
+    "rust-analyzer-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1732050317,
+        "narHash": "sha256-G5LUEOC4kvB/Xbkglv0Noi04HnCfryur7dVjzlHkgpI=",
+        "owner": "rust-lang",
+        "repo": "rust-analyzer",
+        "rev": "c0bbbb3e5d7d1d1d60308c8270bfd5b250032bb4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rust-lang",
+        "ref": "nightly",
+        "repo": "rust-analyzer",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
