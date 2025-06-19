@@ -50,8 +50,5 @@ conflictstyle = zdiff3
 [pull]
 rebase = true
 
-[url "ssh://git@github.com/mewsen"]
-insteadOf = https://github.com/mewsen
-
-[url "ssh://git@github.com/tresorlabs"]
-insteadOf = https://github.com/tresorlabs
+[url "git@github.com:"]
+    insteadOf = https://github.com/
