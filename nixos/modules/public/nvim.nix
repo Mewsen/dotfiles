@@ -1,7 +1,13 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
+
+  programs.neovim = {
+    enable = true;
+    package = inputs.neovim-nightly.packages.${pkgs.system}.default;
+  };
 
   environment.systemPackages = with pkgs; [
-    neovim
+    shellcheck
+    pandoc
 
     ltex-ls
     # lua
@@ -62,7 +68,6 @@
     aspell
     aspellDicts.en
     aspellDicts.en-computers
-    aspellDicts.en-science
     aspellDicts.de
 
   ];

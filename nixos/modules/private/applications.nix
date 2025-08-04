@@ -1,12 +1,15 @@
 { pkgs, ... }: {
 
+    services.emacs = {
+        enable = true;
+        package = pkgs.emacs-git;
+    };
+
   environment.systemPackages = with pkgs; [
     mpv
-    discord
     nautilus
     gnome-disk-utility
-    code-cursor
-    alacritty
+    ghostty
     libreoffice
     obs-studio
     signal-desktop
@@ -20,5 +23,8 @@
     qutebrowser
     godot-mono
     zed-editor
+    nix-search-cli
+    keepassxc
+    ausweisapp
   ];
 }

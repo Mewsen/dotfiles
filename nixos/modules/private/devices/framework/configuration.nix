@@ -5,7 +5,6 @@
     ../../../public/boot.nix
     ../../../public/firefox.nix
     ../../../public/fonts.nix
-    ../../../public/gpg.nix
     ../../../public/graphics.nix
     ../../../public/hardware.nix
     ../../../public/hyprland.nix
@@ -30,7 +29,7 @@
 
   environment.systemPackages = with pkgs; [ framework-tool ];
 
-  nixpkgs.config.allowUnfree = true;
+  #nixpkgs.config.allowUnfree = true;
 
   system.stateVersion = "25.05";
 }

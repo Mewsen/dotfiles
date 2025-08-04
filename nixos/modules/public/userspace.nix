@@ -13,11 +13,16 @@
 
   programs.direnv.enable = true;
   environment.systemPackages = with pkgs; [
+    maven
     bash
     tmux
     git
     gh
+    gnumake
+    libtool
 
+    ghostscript
+    qrcode
     iw
 
     lazygit
@@ -27,9 +32,12 @@
     libva-utils
     brightnessctl
 
+    powertop
+
     ollama
 
     fd
+
     # PDF Utils
     poppler_utils
 

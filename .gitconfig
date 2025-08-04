@@ -2,7 +2,7 @@
 name=Michael Tews
 email=michael@tews.dev
 gpgsign=true
-signingkey=0512FA62963CFD20
+signingkey=FC7BE6F43C844679
 [commit]
 gpgsign=true
 verbose = true
@@ -50,5 +50,7 @@ conflictstyle = zdiff3
 [pull]
 rebase = true
 
-[url "git@github.com:"]
-    insteadOf = https://github.com/
+
+
+[url "git@github.com:tresorlabs"]
+    insteadOf = https://github.com/tresorlabs

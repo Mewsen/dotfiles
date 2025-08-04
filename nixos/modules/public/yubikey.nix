@@ -5,7 +5,6 @@
   programs.gnupg.agent = {
     pinentryPackage = pkgs.pinentry-qt;
     enable = true;
-    enableSSHSupport = true;
   };
 
   hardware.gpgSmartcards.enable = true;
